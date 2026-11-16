@@ -101,6 +101,8 @@ footer{text-align:center;color:#d9ccb2;font:13px system-ui,sans-serif;margin-top
 .rm{font:14px system-ui;border:0;background:none;color:var(--muted);cursor:pointer;padding:6px}
 .music{position:fixed;top:12px;right:12px;z-index:5;font:600 13px system-ui,sans-serif;color:#fbe9bd;background:rgba(10,43,32,.75);border:1px solid var(--gold);border-radius:30px;padding:8px 14px;cursor:pointer;backdrop-filter:blur(4px)}
 .music.on{background:rgba(163,32,46,.85)}
+.music.wait{animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 6px rgba(230,200,120,.25)}}
 .portrait{position:relative;width:min(340px,86vw);margin:16px auto 6px}
 .pframe{padding:7px;border-radius:16px;background:linear-gradient(135deg,#f3dc97 0%,#b48a2c 30%,#f0d48a 55%,#9c7426 80%,#e6c878 100%);box-shadow:0 14px 34px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.15) inset}
 .pframe img{display:block;width:100%;border-radius:10px;border:3px solid #fffaf1}
@@ -212,7 +214,7 @@ figcaption{margin-top:10px;display:flex;flex-direction:column;align-items:center
 var CONFIG = {
   SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbxH9UbLWT9vJAbqkgGs8sw2AjcKcDq54Itkl-Q0R74Rs8_tpOsuJWMMJKqkXbTZCkw-/exec',
   WHATSAPP: '351915582194',
-  DATE_TEXT: 'Domingo, 20 de dezembro de 2026'
+  DATE_TEXT: 'Domingo, 20 de dezembro de 2026 · 12h30'
 };
 /* ================================================ */
 var DATA = {"family": "Família Costa", "event": "Almoço de Natal · 1.ª Edição", "info": "20/12/2026", "households": [{"b": "Jose & Maria", "p": [{"id": "pdhndrdtl", "r": "p", "n": "Jose", "d": "filho de António e Maria"}, {"id": "pdhndrdtl", "r": "s", "n": "Maria"}]}, {"b": "Jose & Maria", "p": [{"id": "pw230bnhi", "r": "p", "n": "Raquel"}]}, {"b": "Jose & Maria", "p": [{"id": "p796ae4t0", "r": "p", "n": "Jorge"}, {"id": "p796ae4t0", "r": "s", "n": "Joana", "d": "mulher de Jorge"}, {"id": "poz0jljb4", "r": "p", "n": "Lia", "kid": 1, "d": "filha de Jorge e Joana"}]}, {"b": "Conceição & Joaquim", "p": [{"id": "pxfmhe0d2", "r": "s", "n": "Joaquim", "d": "marido de Conceição"}]}, {"b": "Conceição & Joaquim", "p": [{"id": "pon9yvexw", "r": "p", "n": "Vasco"}, {"id": "pon9yvexw", "r": "s", "n": "Liliana", "d": "mulher de Vasco"}, {"id": "pg9dl4pgg", "r": "p", "n": "Duarte", "kid": 1, "d": "filho de Vasco e Liliana"}, {"id": "p84yfxe5j", "r": "p", "n": "Afonso", "kid": 1, "d": "filho de Vasco e Liliana"}]}, {"b": "Conceição & Joaquim", "p": [{"id": "p9xms104k", "r": "p", "n": "André"}, {"id": "p9xms104k", "r": "s", "n": "Nádia"}, {"id": "ptk3sfldi", "r": "p", "n": "Gustavo", "kid": 1, "d": "filho de André e Nádia"}]}, {"b": "Emilia & José", "p": [{"id": "p907qe0fw", "r": "p", "n": "Emilia"}, {"id": "p907qe0fw", "r": "s", "n": "José", "d": "marido de Emilia"}]}, {"b": "Emilia & José", "p": [{"id": "p6pwbdd7h", "r": "p", "n": "Marisa"}, {"id": "p6pwbdd7h", "r": "s", "n": "Armindo"}, {"id": "phkhxcqi8", "r": "p", "n": "Clara", "kid": 1, "d": "filha de Marisa e Armindo"}]}, {"b": "Rosa & Fernando", "p": [{"id": "px9lilqme", "r": "p", "n": "Rosa"}, {"id": "px9lilqme", "r": "s", "n": "Fernando"}]}, {"b": "Rosa & Fernando", "p": [{"id": "p1fvecnsp", "r": "p", "n": "Nuno"}, {"id": "p1fvecnsp", "r": "s", "n": "Silvia"}, {"id": "pmyjs3tva", "r": "p", "n": "João", "kid": 1, "d": "filho de Nuno e Silvia"}]}, {"b": "Rosa & Fernando", "p": [{"id": "prkwd6kf8", "r": "p", "n": "Tomás"}]}, {"b": "Rosa & Fernando", "p": [{"id": "p8cr40t7u", "r": "p", "n": "Carla"}, {"id": "p8cr40t7u", "r": "s", "n": "Paulo"}, {"id": "pt1h4rl8s", "r": "p", "n": "Mafalda", "kid": 1, "d": "filha de Carla e Paulo"}]}, {"b": "Rosa & Fernando", "p": [{"id": "pt5h2gcal", "r": "p", "n": "Diogo"}]}, {"b": "Fátima & Joaquim", "p": [{"id": "pwds8xhh9", "r": "p", "n": "Fátima"}, {"id": "pwds8xhh9", "r": "s", "n": "Joaquim", "d": "marido de Fátima"}]}, {"b": "Fátima & Joaquim", "p": [{"id": "pgon2dg8q", "r": "p", "n": "Célia"}]}, {"b": "Fátima & Joaquim", "p": [{"id": "pd2qxeqdu", "r": "p", "n": "Sara"}, {"id": "pd2qxeqdu", "r": "s", "n": "Roberto"}]}, {"b": "Alberto & Alice", "p": [{"id": "p4dlysmqc", "r": "p", "n": "Alberto"}, {"id": "p4dlysmqc", "r": "s", "n": "Alice", "d": "mulher de Alberto"}]}, {"b": "Alberto & Alice", "p": [{"id": "p0t8p4maj", "r": "p", "n": "Miguel"}, {"id": "p0t8p4maj", "r": "s", "n": "Vera"}, {"id": "p88n88bs2", "r": "p", "n": "Benedita", "kid": 1, "d": "filha de Miguel e Vera"}, {"id": "p3t4qt5ya", "r": "p", "n": "Duarte", "kid": 1, "d": "filho de Miguel e Vera"}, {"id": "p0reqy0je", "r": "p", "n": "Alice", "kid": 1, "d": "filha de Miguel e Vera"}]}, {"b": "Alberto & Alice", "p": [{"id": "prfeeyxf6", "r": "p", "n": "Catarina"}]}, {"b": "Deolinda & José", "p": [{"id": "p0c24prx3", "r": "p", "n": "Deolinda"}, {"id": "p0c24prx3", "r": "s", "n": "José", "d": "marido de Deolinda"}]}, {"b": "Deolinda & José", "p": [{"id": "ptc2ab4wk", "r": "p", "n": "Cátia"}, {"id": "pg5mtgsky", "r": "p", "n": "José", "kid": 1, "d": "filho de Cátia"}]}, {"b": "Deolinda & José", "p": [{"id": "pyjgv8k6i", "r": "p", "n": "Bruno"}]}, {"b": "Laurinda & Manuel", "p": [{"id": "pdqyr6bqh", "r": "p", "n": "Laurinda"}, {"id": "pdqyr6bqh", "r": "s", "n": "Manuel"}]}, {"b": "Laurinda & Manuel", "p": [{"id": "pdg7dtj3h", "r": "p", "n": "Liliana", "d": "filha de Laurinda e Manuel"}, {"id": "pdg7dtj3h", "r": "s", "n": "Fábio"}, {"id": "pangfzf8c", "r": "p", "n": "Santiago", "kid": 1, "d": "filho de Liliana e Fábio"}]}, {"b": "Laurinda & Manuel", "p": [{"id": "ps54z4l6q", "r": "p", "n": "Joana", "d": "filha de Laurinda e Manuel"}]}, {"b": "Teresa & David", "p": [{"id": "p544bcay2", "r": "p", "n": "Teresa"}, {"id": "p544bcay2", "r": "s", "n": "David"}]}, {"b": "Teresa & David", "p": [{"id": "ps1ifny76", "r": "p", "n": "Ana"}]}]};
@@ -299,7 +301,7 @@ $('#send').addEventListener('click',function(){
     var waUrl='https://wa.me/'+(CONFIG.WHATSAPP||'')+'?text='+encodeURIComponent(txt);
     $('#wa').classList.toggle('hidden',ok&&!!CONFIG.SCRIPT_URL&&!CONFIG.WHATSAPP);
     $('#wa').onclick=function(){window.open(waUrl,'_blank')};
-    $('#doneTxt').textContent=ok?'A sua resposta foi registada. Até dia 20 — vai ser bom estarmos todos juntos!':'Falta só um passo: carregue no botão abaixo para enviar a resposta por WhatsApp.';
+    $('#doneTxt').textContent=ok?'A sua resposta foi registada. Até dia 20, às 12h30 — vai ser bom estarmos todos juntos!':'Falta só um passo: carregue no botão abaixo para enviar a resposta por WhatsApp.';
     window.scrollTo({top:0,behavior:'smooth'})}
   if(!CONFIG.SCRIPT_URL){finish(false);return}
   btn.disabled=true;btn.textContent='A enviar…';
@@ -310,33 +312,44 @@ $('#send').addEventListener('click',function(){
 $('#again').addEventListener('click',function(){chosen=[];answers={};extras={};$('#q').value='';$('#msg').value='';renderResults();renderPeople();$('#done').classList.add('hidden');$('#form').classList.remove('hidden');window.scrollTo({top:0});$('#q').focus()});
 renderResults();
 
-/* ---------- música: "Noite Feliz" (Silent Night, F. Gruber 1818, domínio público) em caixa de música ---------- */
+/* ---------- música: "Jingle Bells" (J. Pierpont, 1857, domínio público) em caixa de música ---------- */
 (function(){
   var btn=document.getElementById('music');if(!btn)return;
   var AC=window.AudioContext||window.webkitAudioContext;if(!AC){btn.classList.add('hidden');return}
-  var N={C3:130.81,D3:146.83,E3:164.81,F3:174.61,G3:196,A3:220,B3:246.94,G2:98,F2:87.31,C4:261.63,D4:293.66,E4:329.63,F4:349.23,G4:392,A4:440,B4:493.88,C5:523.25,D5:587.33,E5:659.25,F5:698.46};
-  var M=[['G4',1.5],['A4',.5],['G4',1],['E4',3],['G4',1.5],['A4',.5],['G4',1],['E4',3],['D5',2],['D5',1],['B4',3],['C5',2],['C5',1],['G4',3],
-         ['A4',2],['A4',1],['C5',1.5],['B4',.5],['A4',1],['G4',1.5],['A4',.5],['G4',1],['E4',3],['A4',2],['A4',1],['C5',1.5],['B4',.5],['A4',1],['G4',1.5],['A4',.5],['G4',1],['E4',3],
-         ['D5',2],['D5',1],['F5',1.5],['D5',.5],['B4',1],['C5',3],['E5',3],['C5',1],['G4',1],['E4',1],['G4',1.5],['F4',.5],['D4',1],['C4',6]];
-  var B=['C3','C3','C3','C3','G2','G2','C3','C3','F2','C3','C3','C3','F2','C3','C3','C3','G2','G2','C3','C3','C3','G2','C3','C3'];
-  var ctx=null,master=null,on=false,timer=null,next=0,startAt=0,BEAT=60/76,SONG=0;M.forEach(function(n){SONG+=n[1]});
+  // >>> MÚSICA: notas da melodia [nota, duração em tempos], baixo (1 por compasso), andamento <<<
+  var N={C3:130.81,D3:146.83,F3:174.61,G2:98,C4:261.63,D4:293.66,E4:329.63,F4:349.23,G4:392,C5:523.25,D5:587.33,E5:659.25,F5:698.46,G5:783.99};
+  var M=[['E5',1],['E5',1],['E5',2],['E5',1],['E5',1],['E5',2],['E5',1],['G5',1],['C5',1.5],['D5',.5],['E5',4],
+         ['F5',1],['F5',1],['F5',1.5],['F5',.5],['F5',1],['E5',1],['E5',1],['E5',.5],['E5',.5],['E5',1],['D5',1],['D5',1],['E5',1],['D5',2],['G5',2],
+         ['E5',1],['E5',1],['E5',2],['E5',1],['E5',1],['E5',2],['E5',1],['G5',1],['C5',1.5],['D5',.5],['E5',4],
+         ['F5',1],['F5',1],['F5',1.5],['F5',.5],['F5',1],['E5',1],['E5',1],['E5',.5],['E5',.5],['G5',1],['G5',1],['F5',1],['D5',1],['C5',4]];
+  var B=['C3','C3','C3','C3','F3','C3','D3','G2','C3','C3','C3','C3','F3','C3','G2','C3'];
+  var BPB=4,BEAT=60/138;   // tempos por compasso, andamento (138 batidas por minuto)
+  // <<< fim da música >>>
+  var ctx=null,master=null,on=false,timer=null,next=0,SONG=0,noise=null;M.forEach(function(n){SONG+=n[1]});
   function bell(f,t,dur,vol){var o=ctx.createOscillator(),o2=ctx.createOscillator(),g=ctx.createGain(),g2=ctx.createGain();
     o.type='sine';o.frequency.value=f;o2.type='sine';o2.frequency.value=f*2.01;g2.gain.value=.25;
-    g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(vol,t+.012);g.gain.exponentialRampToValueAtTime(.0008,t+Math.max(.9,dur*1.6));
-    o.connect(g);o2.connect(g2);g2.connect(g);g.connect(master);o.start(t);o2.start(t);o.stop(t+Math.max(1,dur*1.7));o2.stop(t+Math.max(1,dur*1.7))}
-  function scheduleSong(t0){var t=t0;M.forEach(function(n){bell(N[n[0]],t,n[1]*BEAT,.22);t+=n[1]*BEAT});
-    B.forEach(function(b,i){bell(N[b],t0+i*3*BEAT,3*BEAT,.1);bell(N[b]*1.5,t0+i*3*BEAT+BEAT,BEAT,.045);bell(N[b]*2,t0+i*3*BEAT+2*BEAT,BEAT,.04)});
-    return t0+(SONG+3)*BEAT}
+    var d=Math.max(.35,Math.min(1.2,dur*1.4));
+    g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(vol,t+.01);g.gain.exponentialRampToValueAtTime(.0008,t+d);
+    o.connect(g);o2.connect(g2);g2.connect(g);g.connect(master);o.start(t);o2.start(t);o.stop(t+d+.05);o2.stop(t+d+.05)}
+  function jingle(t,vol){if(!noise){noise=ctx.createBuffer(1,ctx.sampleRate*.2,ctx.sampleRate);var dd=noise.getChannelData(0);for(var i=0;i<dd.length;i++)dd[i]=Math.random()*2-1}
+    var s=ctx.createBufferSource(),f=ctx.createBiquadFilter(),g=ctx.createGain();s.buffer=noise;f.type='bandpass';f.frequency.value=7500;f.Q.value=1.2;
+    g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(.0005,t+.12);s.connect(f);f.connect(g);g.connect(master);s.start(t);s.stop(t+.15)}
+  function scheduleSong(t0){var t=t0;M.forEach(function(n){bell(N[n[0]],t,n[1]*BEAT,.2);t+=n[1]*BEAT});
+    B.forEach(function(b,i){var s=t0+i*BPB*BEAT,f=N[b];bell(f,s,BEAT,.12);bell(f*2,s+BEAT,BEAT*.5,.05);bell(f*1.5,s+2*BEAT,BEAT,.1);bell(f*2,s+3*BEAT,BEAT*.5,.05)});
+    for(var k=0;k<SONG*2;k++)jingle(t0+k*BEAT/2,k%2?.03:.06);
+    return t0+(SONG+BPB)*BEAT}
   function loop(){if(!on)return;if(next-ctx.currentTime<4){next=scheduleSong(next)}timer=setTimeout(loop,1000)}
   function start(){if(!ctx){ctx=new AC();master=ctx.createGain();master.gain.value=0;master.connect(ctx.destination)}
     ctx.resume();on=true;master.gain.cancelScheduledValues(ctx.currentTime);master.gain.setTargetAtTime(.55,ctx.currentTime,.4);
     if(next<ctx.currentTime)next=ctx.currentTime+.15;loop();btn.classList.add('on');btn.textContent='🔊 Música';btn.setAttribute('aria-pressed','true')}
   function stop(){on=false;clearTimeout(timer);if(ctx){master.gain.setTargetAtTime(0,ctx.currentTime,.2);setTimeout(function(){if(!on){ctx.suspend();next=0}},700)}
     btn.classList.remove('on');btn.textContent='🎵 Música';btn.setAttribute('aria-pressed','false')}
-  var pref=null;try{pref=localStorage.getItem('natal-musica')}catch(e){}
-  btn.addEventListener('click',function(e){e.stopPropagation();if(on){stop();try{localStorage.setItem('natal-musica','off')}catch(x){}}else{start();try{localStorage.setItem('natal-musica','on')}catch(x){}}});
-  if(pref!=='off'){var first=function(e){if(e.target===btn)return;document.removeEventListener('pointerdown',first,true);document.removeEventListener('keydown',first,true);if(!on)start()};
-    document.addEventListener('pointerdown',first,true);document.addEventListener('keydown',first,true)}
+  btn.addEventListener('click',function(e){e.stopPropagation();if(on)stop();else start()});
+  // Começa sempre ligada: tenta tocar logo ao abrir; se o navegador bloquear, começa ao primeiro toque/tecla.
+  function tryAuto(){start();if(ctx.state!=='running'){on=false;btn.classList.remove('on');btn.classList.add('wait');btn.textContent='🎵 Toque para ouvir';
+      var go=function(e){if(e.target===btn)return;['pointerdown','touchend','keydown','click'].forEach(function(ev){document.removeEventListener(ev,go,true)});btn.classList.remove('wait');start()};
+      ['pointerdown','touchend','keydown','click'].forEach(function(ev){document.addEventListener(ev,go,true)})}}
+  tryAuto();
 })();
 (function(){var s=document.getElementById('snow');if(!s)return;var ch=['❄','❅','✦','•'];for(var i=0;i<26;i++){var e=document.createElement('i');e.textContent=ch[i%4];e.style.left=(Math.random()*100)+'%';e.style.fontSize=(8+Math.random()*12)+'px';e.style.animationDuration=(9+Math.random()*12)+'s';e.style.animationDelay=(-Math.random()*20)+'s';e.style.opacity=(0.35+Math.random()*0.5).toFixed(2);s.appendChild(e)}})();
 })();
