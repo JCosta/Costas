@@ -69,6 +69,18 @@ textarea{min-height:80px;resize:vertical}
 .summary{text-align:left;background:#fff6e6;border:1px solid var(--line);border-radius:12px;padding:12px 16px;font:15px/1.6 system-ui,sans-serif;margin-top:14px;white-space:pre-line}
 footer{text-align:center;color:#d9ccb2;font:13px system-ui,sans-serif;margin-top:28px;opacity:.85}
 .hidden{display:none!important}
+.eldest{position:relative;margin-top:22px;padding:26px 22px 20px;border-radius:18px;background:linear-gradient(160deg,#7f1622,#5e0f19);color:#fbefd9;border:1px solid var(--gold);box-shadow:0 10px 30px rgba(0,0,0,.3);font-size:17px;line-height:1.65}
+.eldest h2{color:var(--gold2);text-align:center;margin:0 0 12px}
+.eldest p{margin:0 0 12px}
+.eldest .eq{position:absolute;top:-6px;left:14px;font:90px/1 Georgia,serif;color:rgba(230,200,120,.35)}
+.eldest .esign{text-align:right;margin:16px 0 0;font-style:italic;color:#ecdcbc}
+.eldest .esign span{display:block;font-family:"Great Vibes",cursive;font-style:normal;font-size:34px;color:var(--gold2);line-height:1.2}
+.eldest .esign small{display:block;font:13px system-ui,sans-serif;color:#d9c6a3;font-style:normal}
+.addr2{font:15px system-ui,sans-serif;color:#e8dcc4;margin:-6px 0 14px}
+.thanksmsg{font:17px/1.65 Georgia,serif;color:#3a2c22;text-align:center;margin:6px 4px 0}
+.thanksmsg p{margin:0 0 12px}
+.thanksmsg blockquote{margin:14px auto 4px;max-width:440px;padding:12px 16px;border-left:3px solid var(--gold);background:#fff6e6;border-radius:0 10px 10px 0;font-style:italic;color:var(--red2);text-align:left}
+.thanksmsg blockquote small{display:block;margin-top:4px;font-style:normal;color:var(--muted);font-size:13px}
 .seeall{display:block;width:fit-content;margin:10px auto 0;color:#fbe9bd;font:600 14px system-ui,sans-serif;text-decoration:none;border-bottom:1px dashed var(--gold);padding-bottom:2px}
 .stgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;font-family:system-ui,sans-serif;text-align:center}
 .stgrid div{border:1px solid var(--line);border-radius:12px;padding:8px 4px;background:#fff}
@@ -177,7 +189,19 @@ figcaption{margin-top:10px;display:flex;flex-direction:column;align-items:center
     <p class="sign">Até ao Natal, Família Costa</p>
   </section>
 
-<main id="form">
+<!-- ===== MENSAGEM DO FILHO MAIS VELHO (edite o texto à vontade) ===== -->
+  <section class="eldest">
+    <div class="eq">“</div>
+    <h2>Uma palavra do filho mais velho</h2>
+    <p>Família,</p>
+    <p>Sou o mais velho dos nove e ainda tenho boas memórias de tudo o que vivemos. O pai e a mãe não tinham muito, mas tinham-nos a todos — e isso, para eles, era tudo.</p>
+    <p>Os anos foram passando, cada um seguiu a sua vida, e fomos deixando de nos juntar. Este almoço é a nossa forma de dizer que continuamos a ser aquela família. Que os netos e os bisnetos conheçam os primos, e que os irmãos voltem a rir à mesma mesa.</p>
+    <p>Conto com todos. Os pais haviam de gostar de nos ver assim.</p>
+    <p class="esign">Um abraço do vosso irmão, tio e avô,<span>José</span><small>o filho mais velho de António e Maria</small></p>
+  </section>
+  <!-- ===== fim da mensagem ===== -->
+
+  <main id="form">
     <section class="card"><svg class="holly" viewBox="0 0 46 30" aria-hidden="true"><path d="M22 16C14 4 4 6 2 10c5 0 6 5 3 8 6-2 10 2 9 7 4-4 8-5 8-9z" fill="#1f6b45"/><path d="M24 16c8-12 18-10 20-6-5 0-6 5-3 8-6-2-10 2-9 7-4-4-8-5-8-9z" fill="#2a7d52"/><circle cx="20" cy="18" r="4" fill="#b52635"/><circle cx="27" cy="18" r="4" fill="#c62f3f"/><circle cx="23.5" cy="23" r="4" fill="#a3202e"/></svg>
       <h2>1. Quem é?</h2>
       <p class="hint">Escreva o seu nome e escolha a sua família. Pode escolher mais do que uma, se responder por outras pessoas. Confirme até 8 de dezembro.</p>
@@ -188,7 +212,7 @@ figcaption{margin-top:10px;display:flex;flex-direction:column;align-items:center
     <section class="card hidden" id="who"><svg class="holly" viewBox="0 0 46 30" aria-hidden="true"><path d="M22 16C14 4 4 6 2 10c5 0 6 5 3 8 6-2 10 2 9 7 4-4 8-5 8-9z" fill="#1f6b45"/><path d="M24 16c8-12 18-10 20-6-5 0-6 5-3 8-6-2-10 2-9 7-4-4-8-5-8-9z" fill="#2a7d52"/><circle cx="20" cy="18" r="4" fill="#b52635"/><circle cx="27" cy="18" r="4" fill="#c62f3f"/><circle cx="23.5" cy="23" r="4" fill="#a3202e"/></svg>
       <h2>2. Quem vem?</h2>
       <p class="hint">Para cada pessoa, diga se vem e escolha o prato. Se houver alergias ou restrições, indique-as — avisamos a cozinha.</p>
-      <div class="note-love"><span>💛</span><span>Para esta lista partimos dos casais que conhecemos. Se partilha a vida com alguém que ainda não aparece aqui, <b>acrescente-o(a)</b> no botão por baixo da sua família — à mesa de Natal há sempre lugar para mais um.</span></div>
+      <div class="note-love"><span>💛</span><span>Na lista aparecem os casais casados da família. Namorados(as) e companheiros(as) <b>acrescentam-se no botão por baixo da vossa família</b> — não por serem menos família, que já são, mas só porque ainda não estão na nossa árvore. À mesa de Natal há sempre lugar para mais um!</span></div>
       <div id="people"></div>
     </section>
 
@@ -204,8 +228,9 @@ figcaption{margin-top:10px;display:flex;flex-direction:column;align-items:center
 
   <section class="card thanks hidden" id="done">
     <div class="big">Feliz Natal!</div>
-    <h2>Obrigado pela resposta 🎄</h2>
+    <h2 id="doneTitle">Obrigado pela resposta 🎄</h2>
     <p class="hint" id="doneTxt">A sua resposta foi registada.</p>
+    <div class="thanksmsg" id="doneMsg"></div>
     <div class="summary" id="sum"></div>
     <button class="btn wa hidden" id="wa">Enviar também por WhatsApp</button>
     <button class="btn ghost" id="again">Responder por outra família</button>
@@ -224,6 +249,7 @@ figcaption{margin-top:10px;display:flex;flex-direction:column;align-items:center
     <div class="orn" style="margin:0 auto 18px">✦</div>
     <h3>Onde nos encontramos</h3>
     <div class="place">Restaurante Petisqueira da Lage</div>
+    <div class="addr2">📍 Av. da República 90, 4730-251 Braga</div>
     <div class="links">
       <a href="https://maps.app.goo.gl/ZdqVAttX85GcS8E46" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>Ver no mapa</a>
       <a href="https://www.instagram.com/petisqueiradalagee/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>Instagram</a>
@@ -262,7 +288,7 @@ var CONFIG = {
   DATE_TEXT: 'Domingo, 20 de dezembro de 2026 · 12h30'
 };
 /* ================================================ */
-var DATA = {"family": "Família Costa", "event": "Almoço de Natal · 1.ª Edição", "info": "20/12/2026", "households": [{"b": "Jose & Maria", "p": [{"id": "pdhndrdtl", "r": "p", "n": "Jose", "d": "filho de António e Maria"}, {"id": "pdhndrdtl", "r": "s", "n": "Maria"}]}, {"b": "Jose & Maria", "p": [{"id": "pw230bnhi", "r": "p", "n": "Raquel"}]}, {"b": "Jose & Maria", "p": [{"id": "p796ae4t0", "r": "p", "n": "Jorge"}, {"id": "p796ae4t0", "r": "s", "n": "Joana", "d": "mulher de Jorge"}, {"id": "poz0jljb4", "r": "p", "n": "Lia", "kid": 1, "d": "filha de Jorge e Joana"}]}, {"b": "Conceição & Joaquim", "p": [{"id": "pxfmhe0d2", "r": "s", "n": "Joaquim", "d": "marido de Conceição"}]}, {"b": "Conceição & Joaquim", "p": [{"id": "pon9yvexw", "r": "p", "n": "Vasco"}, {"id": "pon9yvexw", "r": "s", "n": "Liliana", "d": "mulher de Vasco"}, {"id": "pg9dl4pgg", "r": "p", "n": "Duarte", "kid": 1, "d": "filho de Vasco e Liliana"}, {"id": "p84yfxe5j", "r": "p", "n": "Afonso", "kid": 1, "d": "filho de Vasco e Liliana"}]}, {"b": "Conceição & Joaquim", "p": [{"id": "p9xms104k", "r": "p", "n": "André"}, {"id": "p9xms104k", "r": "s", "n": "Nádia"}, {"id": "ptk3sfldi", "r": "p", "n": "Gustavo", "kid": 1, "d": "filho de André e Nádia"}]}, {"b": "Emilia & José", "p": [{"id": "p907qe0fw", "r": "p", "n": "Emilia"}, {"id": "p907qe0fw", "r": "s", "n": "José", "d": "marido de Emilia"}]}, {"b": "Emilia & José", "p": [{"id": "p6pwbdd7h", "r": "p", "n": "Marisa"}, {"id": "p6pwbdd7h", "r": "s", "n": "Armindo"}, {"id": "phkhxcqi8", "r": "p", "n": "Clara", "kid": 1, "d": "filha de Marisa e Armindo"}]}, {"b": "Rosa & Fernando", "p": [{"id": "px9lilqme", "r": "p", "n": "Rosa"}, {"id": "px9lilqme", "r": "s", "n": "Fernando"}]}, {"b": "Rosa & Fernando", "p": [{"id": "p1fvecnsp", "r": "p", "n": "Nuno"}, {"id": "p1fvecnsp", "r": "s", "n": "Silvia"}, {"id": "pmyjs3tva", "r": "p", "n": "João", "kid": 1, "d": "filho de Nuno e Silvia"}]}, {"b": "Rosa & Fernando", "p": [{"id": "prkwd6kf8", "r": "p", "n": "Tomás"}]}, {"b": "Rosa & Fernando", "p": [{"id": "p8cr40t7u", "r": "p", "n": "Carla"}, {"id": "p8cr40t7u", "r": "s", "n": "Paulo"}, {"id": "pt1h4rl8s", "r": "p", "n": "Mafalda", "kid": 1, "d": "filha de Carla e Paulo"}]}, {"b": "Rosa & Fernando", "p": [{"id": "pt5h2gcal", "r": "p", "n": "Diogo"}]}, {"b": "Fátima & Joaquim", "p": [{"id": "pwds8xhh9", "r": "p", "n": "Fátima"}, {"id": "pwds8xhh9", "r": "s", "n": "Joaquim", "d": "marido de Fátima"}]}, {"b": "Fátima & Joaquim", "p": [{"id": "pgon2dg8q", "r": "p", "n": "Célia"}]}, {"b": "Fátima & Joaquim", "p": [{"id": "pd2qxeqdu", "r": "p", "n": "Sara"}, {"id": "pd2qxeqdu", "r": "s", "n": "Roberto"}]}, {"b": "Alberto & Alice", "p": [{"id": "p4dlysmqc", "r": "p", "n": "Alberto"}, {"id": "p4dlysmqc", "r": "s", "n": "Alice", "d": "mulher de Alberto"}]}, {"b": "Alberto & Alice", "p": [{"id": "p0t8p4maj", "r": "p", "n": "Miguel"}, {"id": "p0t8p4maj", "r": "s", "n": "Vera"}, {"id": "p88n88bs2", "r": "p", "n": "Benedita", "kid": 1, "d": "filha de Miguel e Vera"}, {"id": "p3t4qt5ya", "r": "p", "n": "Duarte", "kid": 1, "d": "filho de Miguel e Vera"}, {"id": "p0reqy0je", "r": "p", "n": "Alice", "kid": 1, "d": "filha de Miguel e Vera"}]}, {"b": "Alberto & Alice", "p": [{"id": "prfeeyxf6", "r": "p", "n": "Catarina"}]}, {"b": "Deolinda & José", "p": [{"id": "p0c24prx3", "r": "p", "n": "Deolinda"}, {"id": "p0c24prx3", "r": "s", "n": "José", "d": "marido de Deolinda"}]}, {"b": "Deolinda & José", "p": [{"id": "ptc2ab4wk", "r": "p", "n": "Cátia"}, {"id": "pg5mtgsky", "r": "p", "n": "José", "kid": 1, "d": "filho de Cátia"}]}, {"b": "Deolinda & José", "p": [{"id": "pyjgv8k6i", "r": "p", "n": "Bruno"}]}, {"b": "Laurinda & Manuel", "p": [{"id": "pdqyr6bqh", "r": "p", "n": "Laurinda"}, {"id": "pdqyr6bqh", "r": "s", "n": "Manuel"}]}, {"b": "Laurinda & Manuel", "p": [{"id": "pdg7dtj3h", "r": "p", "n": "Liliana", "d": "filha de Laurinda e Manuel"}, {"id": "pdg7dtj3h", "r": "s", "n": "Fábio"}, {"id": "pangfzf8c", "r": "p", "n": "Santiago", "kid": 1, "d": "filho de Liliana e Fábio"}]}, {"b": "Laurinda & Manuel", "p": [{"id": "ps54z4l6q", "r": "p", "n": "Joana", "d": "filha de Laurinda e Manuel"}]}, {"b": "Teresa & David", "p": [{"id": "p544bcay2", "r": "p", "n": "Teresa"}, {"id": "p544bcay2", "r": "s", "n": "David"}]}, {"b": "Teresa & David", "p": [{"id": "ps1ifny76", "r": "p", "n": "Ana"}]}]};
+var DATA = {"family": "Família Costa", "event": "Almoço de Natal · 1.ª Edição", "info": "20/12/2026", "households": [{"b": "José & Maria", "p": [{"id": "pdhndrdtl", "r": "p", "n": "José", "d": "🌱 filho de António e Maria"}, {"id": "pdhndrdtl", "r": "s", "n": "Maria", "d": "💍 José"}]}, {"b": "José & Maria", "p": [{"id": "pw230bnhi", "r": "p", "n": "Raquel", "d": "🌱 filha de José e Maria"}]}, {"b": "José & Maria", "p": [{"id": "p796ae4t0", "r": "p", "n": "Jorge", "d": "🌱 filho de José e Maria"}, {"id": "p796ae4t0", "r": "s", "n": "Joana", "d": "💍 Jorge"}, {"id": "poz0jljb4", "r": "p", "n": "Lia", "kid": 1, "d": "🌱 filha de Jorge e Joana"}]}, {"b": "Conceição & Joaquim", "p": [{"id": "pxfmhe0d2", "r": "s", "n": "Joaquim", "d": "💍 Conceição"}]}, {"b": "Conceição & Joaquim", "p": [{"id": "pon9yvexw", "r": "p", "n": "Vasco", "d": "🌱 filho de Conceição e Joaquim"}, {"id": "pon9yvexw", "r": "s", "n": "Liliana", "d": "💍 Vasco"}, {"id": "pg9dl4pgg", "r": "p", "n": "Duarte", "kid": 1, "d": "🌱 filho de Vasco e Liliana"}, {"id": "p84yfxe5j", "r": "p", "n": "Afonso", "kid": 1, "d": "🌱 filho de Vasco e Liliana"}]}, {"b": "Conceição & Joaquim", "p": [{"id": "p9xms104k", "r": "p", "n": "André", "d": "🌱 filho de Conceição e Joaquim"}, {"id": "p9xms104k", "r": "s", "n": "Nádia", "d": "💍 André"}, {"id": "ptk3sfldi", "r": "p", "n": "Gustavo", "kid": 1, "d": "🌱 filho de André e Nádia"}]}, {"b": "Emilia & José", "p": [{"id": "p907qe0fw", "r": "p", "n": "Emilia", "d": "🌱 filha de António e Maria"}, {"id": "p907qe0fw", "r": "s", "n": "José", "d": "💍 Emilia"}]}, {"b": "Emilia & José", "p": [{"id": "p6pwbdd7h", "r": "p", "n": "Marisa", "d": "🌱 filha de Emilia e José"}, {"id": "p6pwbdd7h", "r": "s", "n": "Armindo", "d": "💍 Marisa"}, {"id": "phkhxcqi8", "r": "p", "n": "Clara", "kid": 1, "d": "🌱 filha de Marisa e Armindo"}]}, {"b": "Rosa & Fernando", "p": [{"id": "px9lilqme", "r": "p", "n": "Rosa", "d": "🌱 filha de António e Maria"}, {"id": "px9lilqme", "r": "s", "n": "Fernando", "d": "💍 Rosa"}]}, {"b": "Rosa & Fernando", "p": [{"id": "p1fvecnsp", "r": "p", "n": "Nuno", "d": "🌱 filho de Rosa e Fernando"}, {"id": "p1fvecnsp", "r": "s", "n": "Silvia", "d": "💍 Nuno"}, {"id": "pmyjs3tva", "r": "p", "n": "João", "kid": 1, "d": "🌱 filho de Nuno e Silvia"}]}, {"b": "Rosa & Fernando", "p": [{"id": "prkwd6kf8", "r": "p", "n": "Tomás", "d": "🌱 filho de Nuno e Silvia"}]}, {"b": "Rosa & Fernando", "p": [{"id": "p8cr40t7u", "r": "p", "n": "Carla", "d": "🌱 filha de Rosa e Fernando"}, {"id": "p8cr40t7u", "r": "s", "n": "Paulo", "d": "💍 Carla"}, {"id": "pt1h4rl8s", "r": "p", "n": "Mafalda", "kid": 1, "d": "🌱 filha de Carla e Paulo"}]}, {"b": "Rosa & Fernando", "p": [{"id": "pt5h2gcal", "r": "p", "n": "Diogo", "d": "🌱 filho de Carla e Paulo"}]}, {"b": "Fátima & Joaquim", "p": [{"id": "pwds8xhh9", "r": "p", "n": "Fátima", "d": "🌱 filha de António e Maria"}, {"id": "pwds8xhh9", "r": "s", "n": "Joaquim", "d": "💍 Fátima"}]}, {"b": "Fátima & Joaquim", "p": [{"id": "pgon2dg8q", "r": "p", "n": "Célia", "d": "🌱 filha de Fátima e Joaquim"}]}, {"b": "Fátima & Joaquim", "p": [{"id": "pd2qxeqdu", "r": "p", "n": "Sara", "d": "🌱 filha de Fátima e Joaquim"}, {"id": "pd2qxeqdu", "r": "s", "n": "Roberto", "d": "💍 Sara"}]}, {"b": "Alberto & Alice", "p": [{"id": "p4dlysmqc", "r": "p", "n": "Alberto", "d": "🌱 filho de António e Maria"}, {"id": "p4dlysmqc", "r": "s", "n": "Alice", "d": "💍 Alberto"}]}, {"b": "Alberto & Alice", "p": [{"id": "p0t8p4maj", "r": "p", "n": "Miguel", "d": "🌱 filho de Alberto e Alice"}, {"id": "p0t8p4maj", "r": "s", "n": "Vera", "d": "💍 Miguel"}, {"id": "p88n88bs2", "r": "p", "n": "Benedita", "kid": 1, "d": "🌱 filha de Miguel e Vera"}, {"id": "p3t4qt5ya", "r": "p", "n": "Duarte", "kid": 1, "d": "🌱 filho de Miguel e Vera"}, {"id": "p0reqy0je", "r": "p", "n": "Alice", "kid": 1, "d": "🌱 filha de Miguel e Vera"}]}, {"b": "Alberto & Alice", "p": [{"id": "prfeeyxf6", "r": "p", "n": "Catarina", "d": "🌱 filha de Alberto e Alice"}]}, {"b": "Deolinda & José", "p": [{"id": "p0c24prx3", "r": "p", "n": "Deolinda", "d": "🌱 filha de António e Maria"}, {"id": "p0c24prx3", "r": "s", "n": "José", "d": "💍 Deolinda"}]}, {"b": "Deolinda & José", "p": [{"id": "ptc2ab4wk", "r": "p", "n": "Cátia", "d": "🌱 filha de Deolinda e José"}, {"id": "pg5mtgsky", "r": "p", "n": "José", "kid": 1, "d": "🌱 filho de Cátia"}]}, {"b": "Deolinda & José", "p": [{"id": "pyjgv8k6i", "r": "p", "n": "Bruno", "d": "🌱 filho de Deolinda e José"}]}, {"b": "Laurinda & Manuel", "p": [{"id": "pdqyr6bqh", "r": "p", "n": "Laurinda", "d": "🌱 filha de António e Maria"}, {"id": "pdqyr6bqh", "r": "s", "n": "Manuel", "d": "💍 Laurinda"}]}, {"b": "Laurinda & Manuel", "p": [{"id": "pdg7dtj3h", "r": "p", "n": "Liliana", "d": "🌱 filha de Laurinda e Manuel"}, {"id": "pdg7dtj3h", "r": "s", "n": "Fábio", "d": "💍 Liliana"}, {"id": "pangfzf8c", "r": "p", "n": "Santiago", "kid": 1, "d": "🌱 filho de Liliana e Fábio"}]}, {"b": "Laurinda & Manuel", "p": [{"id": "ps54z4l6q", "r": "p", "n": "Joana", "d": "🌱 filha de Laurinda e Manuel"}]}, {"b": "Teresa & David", "p": [{"id": "p544bcay2", "r": "p", "n": "Teresa", "d": "🌱 filha de António e Maria"}, {"id": "p544bcay2", "r": "s", "n": "David", "d": "💍 Teresa"}]}, {"b": "Teresa & David", "p": [{"id": "ps1ifny76", "r": "p", "n": "Ana", "d": "🌱 filha de Teresa e David"}]}]};
 
 (function(){
 'use strict';
@@ -298,7 +324,7 @@ $('#res').addEventListener('click',function(e){var b=e.target.closest('.hh');if(
   renderResults();renderPeople()});
 
 function personHTML(k,name,a,tags,isExtra){
-  return '<div class="person" data-k="'+k+'">'+(isExtra?'<div class="cname"><input type="text" class="cn" placeholder="Nome do(a) companheiro(a)" value="'+esc(a.name||'')+'"><button class="rm" title="Remover">✕</button></div>':'<div class="pname">'+esc(name)+tags+'</div>')+
+  return '<div class="person" data-k="'+k+'">'+(isExtra?'<div class="cname"><input type="text" class="cn" placeholder="Nome do(a) namorado(a) / companheiro(a)" value="'+esc(a.name||'')+'"><button class="rm" title="Remover">✕</button></div>':'<div class="pname">'+esc(name)+tags+'</div>')+
     '<div class="seg"><button class="yes'+(a.coming===true?' on':'')+'" data-v="1">✓ Vem</button><button class="no'+(a.coming===false?' on':'')+'" data-v="0">✗ Não vem</button></div>'+
     (a.coming===true?'<div class="diet"><div class="lbl">Escolha o prato</div><div class="meals">'+MEALS.map(function(m){return '<button class="meal'+(a.meal===m.k?' on':'')+'" data-m="'+m.k+'"><span class="mi">'+m.i+'</span><span><b>'+m.k+'</b>'+(m.s?'<small>'+m.s+'</small>':'')+'</span></button>'}).join('')+'</div>'+
       (a.showR||a.restr?'<input type="text" class="restr" placeholder="Alergias ou restrições — ex.: sem glúten, alergia a marisco" value="'+esc(a.restr||'')+'">':'<button class="addr">+ Alguma alergia ou restrição alimentar?</button>')+'</div>':'')+'</div>'}
@@ -309,7 +335,7 @@ function renderPeople(){
     if(chosen.length>1||true)html+='<div class="hhead">'+esc(h.label)+'</div>';
     h.p.forEach(function(p){html+=personHTML(pkey(p),p.n,answers[pkey(p)],(p.d?' <span class="desc">('+esc(p.d)+')</span>':'')+(p.kid?'<span class="tag">criança</span>':''),false)});
     (extras[i]||[]).forEach(function(a,j){html+=personHTML('x:'+i+':'+j,'',a,'',true)});
-    if((extras[i]||[]).length<2)html+='<button class="addc" data-add="'+i+'">+ Acrescentar companheiro(a)</button>'});
+    if((extras[i]||[]).length<2)html+='<button class="addc" data-add="'+i+'">+ Acrescentar namorado(a) / companheiro(a)</button>'});
   $('#people').innerHTML=html;
   $('#who').classList.toggle('hidden',!chosen.length);
   $('#final').classList.toggle('hidden',!chosen.length);
@@ -329,7 +355,7 @@ function collect(){var out=[];chosen.forEach(function(i){var h=DATA.households[i
   (extras[i]||[]).forEach(function(a){var nm=(a.name||'').trim();out.push({id:h.p[0].id,role:'c',name:nm,household:h.label,branch:h.b,coming:a.coming,meal:a.coming?a.meal:'',restr:a.coming?(a.restr||'').trim():'',extra:true})})});return out}
 function summaryText(people,by,msg){
   var t=DATA.family+(DATA.event?' · '+DATA.event:'')+'\nResposta de '+(by||'—')+':\n';
-  people.forEach(function(p){t+='\n'+(p.coming?'✅ ':'❌ ')+p.name+(p.desc?' ('+p.desc+')':'')+(p.role==='c'?' (companheiro/a)':'')+(p.coming&&p.meal?' — '+p.meal:'')+(p.coming&&p.restr?' · ⚠️ '+p.restr:'')});
+  people.forEach(function(p){t+='\n'+(p.coming?'✅ ':'❌ ')+p.name+(p.desc?' ('+p.desc+')':'')+(p.role==='c'?' (❤️ companheiro/a)':'')+(p.coming&&p.meal?' — '+p.meal:'')+(p.coming&&p.restr?' · ⚠️ '+p.restr:'')});
   if(msg)t+='\n\nMensagem: '+msg;return t}
 
 $('#send').addEventListener('click',function(){
@@ -344,11 +370,18 @@ $('#send').addEventListener('click',function(){
   var payload={submittedAt:new Date().toISOString(),by:by,message:msg,people:people};
   var txt=summaryText(people,by,msg),btn=this;
   function finish(ok){btn.disabled=false;btn.textContent='Enviar resposta';
-    $('#form').classList.add('hidden');$('#done').classList.remove('hidden');$('#sum').textContent=txt.split('\n').slice(2).join('\n');
+    $('#form').classList.add('hidden');$('#done').classList.remove('hidden');$('#sum').textContent=txt.split('\n').slice(2).join('\n').trim();
     var waUrl='https://wa.me/'+(CONFIG.WHATSAPP||'')+'?text='+encodeURIComponent(txt);
     $('#wa').classList.toggle('hidden',ok&&!!CONFIG.SCRIPT_URL&&!CONFIG.WHATSAPP);
     $('#wa').onclick=function(){window.open(waUrl,'_blank')};
-    $('#doneTxt').textContent=ok?'A sua resposta foi registada. Até dia 20, às 12h30 — vai ser bom estarmos todos juntos!':'Falta só um passo: carregue no botão abaixo para enviar a resposta por WhatsApp.';
+    var anyYes=people.some(function(p){return p.coming});
+    $('#doneTitle').textContent=anyYes?'Obrigado por dizer sim! 💛':'Obrigado por nos avisar 💛';
+    $('#doneTxt').textContent=ok?'A sua resposta foi registada.':'Falta só um passo: carregue no botão abaixo para enviar a resposta por WhatsApp.';
+    $('#doneMsg').innerHTML=anyYes
+      ?'<p>Cada lugar que se preenche à mesa é a prova de que a Família Costa continua unida. Os avós ensinaram-nos que o mais importante nunca foi o que estava no prato, mas quem estava à volta dele.</p><p>Obrigado por fazer parte deste reencontro. Até dia 20, às 12h30 — vai ser bom estarmos todos juntos outra vez!</p>'+
+        '<blockquote>Uma família unida é a maior herança que os avós nos deixaram. Cabe-nos a nós mantê-la viva.<small>— 1.ª Edição do Almoço de Natal da Família Costa</small></blockquote>'
+      :'<p>Vamos sentir a vossa falta à mesa. A família é sempre a vossa casa, e o vosso lugar fica guardado para a próxima edição.</p><p>Se os planos mudarem, basta voltar a esta página e responder outra vez.</p>'+
+        '<blockquote>Mesmo longe, continuamos a ser a mesma família.<small>— Família Costa</small></blockquote>';
     window.scrollTo({top:0,behavior:'smooth'})}
   if(!CONFIG.SCRIPT_URL){finish(false);return}
   setTimeout(loadStatus,3000);setTimeout(loadStatus,8000);
@@ -372,7 +405,7 @@ function renderStatus(){var d=stData,yes=0,no=0,pend=0,html='';
       h.p.forEach(function(p){var v=d.st[p.id+':'+p.r];gt++;if(v===1){yes++;gy++}else if(v===0)no++;else pend++;
         rows+='<div class="srow'+(v===undefined?' pend':'')+'"><span class="ic">'+(v===1?'✅':v===0?'❌':'⏳')+'</span><span>'+esc(p.n)+(p.d?' <small>('+esc(p.d)+')</small>':'')+'</span></div>'});
       comps.filter(function(c){return c.h===h.label}).forEach(function(c){gt++;if(c.v){yes++;gy++}else no++;
-        rows+='<div class="srow"><span class="ic">'+(c.v?'✅':'❌')+'</span><span>'+esc(c.n)+' <small>(companheiro/a)</small></span></div>'})});
+        rows+='<div class="srow"><span class="ic">'+(c.v?'✅':'❌')+'</span><span>'+esc(c.n)+' <small>(❤️ companheiro/a)</small></span></div>'})});
     html+='<div class="sgrp"><span>Ramo '+esc(b)+'</span><span>'+gy+'/'+gt+'</span></div>'+rows});
   var tot=yes+no+pend;
   $('#stSum').innerHTML='<div class="stgrid"><div><b style="color:var(--ok)">'+yes+'</b><span>Confirmados</span></div><div><b style="color:var(--no)">'+no+'</b><span>Não vêm</span></div><div><b style="color:#a06d16">'+pend+'</b><span>Faltam responder</span></div></div>'+
