@@ -69,6 +69,18 @@ textarea{min-height:80px;resize:vertical}
 .summary{text-align:left;background:#fff6e6;border:1px solid var(--line);border-radius:12px;padding:12px 16px;font:15px/1.6 system-ui,sans-serif;margin-top:14px;white-space:pre-line}
 footer{text-align:center;color:#d9ccb2;font:13px system-ui,sans-serif;margin-top:28px;opacity:.85}
 .hidden{display:none!important}
+.stgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;font-family:system-ui,sans-serif;text-align:center}
+.stgrid div{border:1px solid var(--line);border-radius:12px;padding:8px 4px;background:#fff}
+.stgrid b{display:block;font-size:24px;line-height:1.1}
+.stgrid span{font-size:12px;color:var(--muted)}
+.bar{height:10px;border-radius:10px;background:#efe5d2;overflow:hidden;margin:12px 0 2px;display:flex}
+.bar i{display:block;height:100%}
+#stList{margin-top:12px;font-family:system-ui,sans-serif}
+.sgrp{display:flex;justify-content:space-between;font:600 12px system-ui,sans-serif;letter-spacing:.05em;text-transform:uppercase;color:var(--red2);margin:14px 0 4px;opacity:.85}
+.srow{display:flex;gap:8px;align-items:baseline;padding:4px 0;border-bottom:1px dashed #efe3cc;font-size:15px}
+.srow .ic{width:20px;flex:none;text-align:center}
+.srow small{color:var(--muted);font-style:italic}
+.srow.pend{color:var(--muted)}
 .meals{display:grid;gap:8px}
 .meal{display:flex;align-items:center;gap:12px;text-align:left;font:15px system-ui,sans-serif;padding:11px 14px;border-radius:12px;border:1.5px solid var(--line);background:#fff;cursor:pointer;color:var(--ink)}
 .meal b{display:block;font-size:16px}
@@ -197,6 +209,15 @@ figcaption{margin-top:10px;display:flex;flex-direction:column;align-items:center
     <button class="btn ghost" id="again">Responder por outra família</button>
   </section>
 
+  <section class="card hidden" id="status">
+    <svg class="holly" viewBox="0 0 46 30" aria-hidden="true"><path d="M22 16C14 4 4 6 2 10c5 0 6 5 3 8 6-2 10 2 9 7 4-4 8-5 8-9z" fill="#1f6b45"/><path d="M24 16c8-12 18-10 20-6-5 0-6 5-3 8-6-2-10 2-9 7-4-4-8-5-8-9z" fill="#2a7d52"/><circle cx="20" cy="18" r="4" fill="#b52635"/><circle cx="27" cy="18" r="4" fill="#c62f3f"/><circle cx="23.5" cy="23" r="4" fill="#a3202e"/></svg>
+    <h2>Quem já respondeu</h2>
+    <p class="hint">A lista atualiza sozinha sempre que alguém responde.</p>
+    <div id="stSum"></div>
+    <button class="btn ghost" id="stToggle">Ver a lista da família</button>
+    <div id="stList" class="hidden"></div>
+  </section>
+
   <section class="infos">
     <div class="orn" style="margin:0 auto 18px">✦</div>
     <h3>Onde nos encontramos</h3>
@@ -234,7 +255,7 @@ figcaption{margin-top:10px;display:flex;flex-direction:column;align-items:center
    WHATSAPP:   número para onde vão as respostas por WhatsApp (com indicativo, só dígitos), ex.: '351912345678'.
    DATE_TEXT:  texto da data mostrado no topo. */
 var CONFIG = {
-  SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbwKE0uXK4TDIVpHTNE-sj_vMpzoRjDn_oa9AbFwUGyOmCjiy0Dt7mZZbe11Hx_sw-4q/exec',
+  SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbxRUPWH6DDA3T0zifNS9sSLvsWcmyugGyagqXpk1QJNqS7PIVmhFE5iJD5V3gp9J9QD/exec',
   WHATSAPP: '',
   DATE_TEXT: 'Domingo, 20 de dezembro de 2026 · 12h30'
 };
@@ -328,6 +349,7 @@ $('#send').addEventListener('click',function(){
     $('#doneTxt').textContent=ok?'A sua resposta foi registada. Até dia 20, às 12h30 — vai ser bom estarmos todos juntos!':'Falta só um passo: carregue no botão abaixo para enviar a resposta por WhatsApp.';
     window.scrollTo({top:0,behavior:'smooth'})}
   if(!CONFIG.SCRIPT_URL){finish(false);return}
+  setTimeout(loadStatus,3000);setTimeout(loadStatus,8000);
   btn.disabled=true;btn.textContent='A enviar…';
   fetch(CONFIG.SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)})
     .then(function(){finish(true)})
@@ -336,34 +358,65 @@ $('#send').addEventListener('click',function(){
 $('#again').addEventListener('click',function(){chosen=[];answers={};extras={};$('#q').value='';$('#msg').value='';renderResults();renderPeople();$('#done').classList.add('hidden');$('#form').classList.remove('hidden');window.scrollTo({top:0});$('#q').focus()});
 renderResults();
 
-/* ---------- música: "Jingle Bells" (J. Pierpont, 1857, domínio público) em caixa de música ---------- */
+/* ---------- quem já respondeu ---------- */
+var stData=null;
+function loadStatus(){if(!CONFIG.SCRIPT_URL)return;
+  fetch(CONFIG.SCRIPT_URL+'?action=status&t='+Date.now()).then(function(r){return r.json()}).then(function(d){if(!d||!d.ok)return;stData=d;renderStatus()}).catch(function(){})}
+function renderStatus(){var d=stData,yes=0,no=0,pend=0,html='';
+  var comps=Object.keys(d.comp||{}).map(function(k){return d.comp[k]});
+  var groups={},order=[];DATA.households.forEach(function(h){if(!groups[h.b]){groups[h.b]=[];order.push(h.b)}groups[h.b].push(h)});
+  order.forEach(function(b){var rows='',gy=0,gt=0;
+    groups[b].forEach(function(h){
+      h.p.forEach(function(p){var v=d.st[p.id+':'+p.r];gt++;if(v===1){yes++;gy++}else if(v===0)no++;else pend++;
+        rows+='<div class="srow'+(v===undefined?' pend':'')+'"><span class="ic">'+(v===1?'✅':v===0?'❌':'⏳')+'</span><span>'+esc(p.n)+(p.d?' <small>('+esc(p.d)+')</small>':'')+'</span></div>'});
+      comps.filter(function(c){return c.h===h.label}).forEach(function(c){gt++;if(c.v){yes++;gy++}else no++;
+        rows+='<div class="srow"><span class="ic">'+(c.v?'✅':'❌')+'</span><span>'+esc(c.n)+' <small>(companheiro/a)</small></span></div>'})});
+    html+='<div class="sgrp"><span>Ramo '+esc(b)+'</span><span>'+gy+'/'+gt+'</span></div>'+rows});
+  var tot=yes+no+pend;
+  $('#stSum').innerHTML='<div class="stgrid"><div><b style="color:var(--ok)">'+yes+'</b><span>Confirmados</span></div><div><b style="color:var(--no)">'+no+'</b><span>Não vêm</span></div><div><b style="color:#a06d16">'+pend+'</b><span>Faltam responder</span></div></div>'+
+    '<div class="bar"><i style="width:'+(tot?yes/tot*100:0)+'%;background:var(--ok)"></i><i style="width:'+(tot?no/tot*100:0)+'%;background:var(--no)"></i></div>';
+  $('#stList').innerHTML=html;$('#status').classList.remove('hidden')}
+$('#stToggle').addEventListener('click',function(){var l=$('#stList'),h=l.classList.toggle('hidden');this.textContent=h?'Ver a lista da família':'Esconder a lista'});
+loadStatus();
+
+/* ---------- música: "Deck the Halls" (tradicional galesa, domínio público) — celesta com acordes ---------- */
 (function(){
   var btn=document.getElementById('music');if(!btn)return;
   var AC=window.AudioContext||window.webkitAudioContext;if(!AC){btn.classList.add('hidden');return}
-  // >>> MÚSICA: notas da melodia [nota, duração em tempos], baixo (1 por compasso), andamento <<<
-  var N={C3:130.81,D3:146.83,F3:174.61,G2:98,C4:261.63,D4:293.66,E4:329.63,F4:349.23,G4:392,C5:523.25,D5:587.33,E5:659.25,F5:698.46,G5:783.99};
-  var M=[['E5',1],['E5',1],['E5',2],['E5',1],['E5',1],['E5',2],['E5',1],['G5',1],['C5',1.5],['D5',.5],['E5',4],
-         ['F5',1],['F5',1],['F5',1.5],['F5',.5],['F5',1],['E5',1],['E5',1],['E5',.5],['E5',.5],['E5',1],['D5',1],['D5',1],['E5',1],['D5',2],['G5',2],
-         ['E5',1],['E5',1],['E5',2],['E5',1],['E5',1],['E5',2],['E5',1],['G5',1],['C5',1.5],['D5',.5],['E5',4],
-         ['F5',1],['F5',1],['F5',1.5],['F5',.5],['F5',1],['E5',1],['E5',1],['E5',.5],['E5',.5],['G5',1],['G5',1],['F5',1],['D5',1],['C5',4]];
-  var B=['C3','C3','C3','C3','F3','C3','D3','G2','C3','C3','C3','C3','F3','C3','G2','C3'];
-  var BPB=4,BEAT=60/138;   // tempos por compasso, andamento (138 batidas por minuto)
+  // >>> MÚSICA: notas da melodia [nota, duração em tempos], acorde de cada compasso, andamento <<<
+  var N={B4:493.88,C5:523.25,D5:587.33,E5:659.25,F5:698.46,G5:783.99,A5:880,B5:987.77,C6:1046.5,C3:130.81,F3:174.61,G3:196};
+  var A1=[['G5',1.5],['F5',.5],['E5',1],['D5',1],['C5',1],['D5',1],['E5',1],['C5',1],['D5',.5],['E5',.5],['F5',.5],['D5',.5],['E5',1.5],['D5',.5],['C5',1],['B4',1],['C5',2]];
+  var M=A1.concat(A1,[['D5',1.5],['E5',.5],['F5',1],['D5',1],['E5',1.5],['F5',.5],['G5',1],['D5',1],['E5',.5],['F5',.5],['G5',1],['A5',.5],['B5',.5],['C6',1],['B5',1],['A5',1],['G5',2]],
+    [['G5',1.5],['F5',.5],['E5',1],['D5',1],['C5',1],['D5',1],['E5',1],['C5',1],['A5',.5],['A5',.5],['A5',.5],['A5',.5],['G5',1.5],['F5',.5],['E5',1],['D5',1],['C5',2]]);
+  var B=['C','C','G','C','C','C','G','C','G','C','C','G','C','C','F','C'];
+  var CH={C:'C3',F:'F3',G:'G3'};
+  var BPB=4,BEAT=60/116;   // tempos por compasso, andamento (116 batidas por minuto)
   // <<< fim da música >>>
-  var ctx=null,master=null,on=false,timer=null,next=0,SONG=0,noise=null;M.forEach(function(n){SONG+=n[1]});
-  function bell(f,t,dur,vol){var o=ctx.createOscillator(),o2=ctx.createOscillator(),g=ctx.createGain(),g2=ctx.createGain();
-    o.type='sine';o.frequency.value=f;o2.type='sine';o2.frequency.value=f*2.01;g2.gain.value=.25;
-    var d=Math.max(.35,Math.min(1.2,dur*1.4));
-    g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(vol,t+.01);g.gain.exponentialRampToValueAtTime(.0008,t+d);
-    o.connect(g);o2.connect(g2);g2.connect(g);g.connect(master);o.start(t);o2.start(t);o.stop(t+d+.05);o2.stop(t+d+.05)}
+  var ctx=null,master=null,dry=null,wet=null,on=false,timer=null,next=0,SONG=0,noise=null;M.forEach(function(n){SONG+=n[1]});
+  function setup(){ctx=new AC();master=ctx.createGain();master.gain.value=0;master.connect(ctx.destination);
+    dry=ctx.createGain();dry.connect(master);
+    var rev=ctx.createConvolver(),len=ctx.sampleRate*2.2,ir=ctx.createBuffer(2,len,ctx.sampleRate);
+    for(var c=0;c<2;c++){var d=ir.getChannelData(c);for(var i=0;i<len;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/len,3)}
+    rev.buffer=ir;wet=ctx.createGain();wet.gain.value=.28;wet.connect(rev);rev.connect(master)}
+  function out(g){g.connect(dry);g.connect(wet)}
+  function celesta(f,t,dur,vol){var g=ctx.createGain(),d=Math.max(.6,Math.min(1.6,dur*1.8));
+    [[1,1],[2,.32],[3.01,.12],[4.2,.05]].forEach(function(p){var o=ctx.createOscillator(),pg=ctx.createGain();o.type='sine';o.frequency.value=f*p[0];pg.gain.value=p[1];o.connect(pg);pg.connect(g);o.start(t);o.stop(t+d+.05)});
+    g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(vol,t+.008);g.gain.exponentialRampToValueAtTime(vol*.35,t+.18);g.gain.exponentialRampToValueAtTime(.0005,t+d);out(g)}
+  function pad(f,t,dur,vol){var g=ctx.createGain(),lp=ctx.createBiquadFilter();lp.type='lowpass';lp.frequency.value=1400;
+    [1,1.26,1.498,2].forEach(function(r){var o=ctx.createOscillator();o.type='triangle';o.frequency.value=f*r;o.connect(lp);o.start(t);o.stop(t+dur+.1)});
+    lp.connect(g);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(vol,t+.03);g.gain.exponentialRampToValueAtTime(.0005,t+dur);out(g)}
   function jingle(t,vol){if(!noise){noise=ctx.createBuffer(1,ctx.sampleRate*.2,ctx.sampleRate);var dd=noise.getChannelData(0);for(var i=0;i<dd.length;i++)dd[i]=Math.random()*2-1}
-    var s=ctx.createBufferSource(),f=ctx.createBiquadFilter(),g=ctx.createGain();s.buffer=noise;f.type='bandpass';f.frequency.value=7500;f.Q.value=1.2;
-    g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(.0005,t+.12);s.connect(f);f.connect(g);g.connect(master);s.start(t);s.stop(t+.15)}
-  function scheduleSong(t0){var t=t0;M.forEach(function(n){bell(N[n[0]],t,n[1]*BEAT,.2);t+=n[1]*BEAT});
-    B.forEach(function(b,i){var s=t0+i*BPB*BEAT,f=N[b];bell(f,s,BEAT,.12);bell(f*2,s+BEAT,BEAT*.5,.05);bell(f*1.5,s+2*BEAT,BEAT,.1);bell(f*2,s+3*BEAT,BEAT*.5,.05)});
-    for(var k=0;k<SONG*2;k++)jingle(t0+k*BEAT/2,k%2?.03:.06);
+    var s=ctx.createBufferSource(),f=ctx.createBiquadFilter(),g=ctx.createGain();s.buffer=noise;f.type='bandpass';f.frequency.value=8000;f.Q.value=1.4;
+    g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(.0005,t+.1);s.connect(f);f.connect(g);g.connect(master);s.start(t);s.stop(t+.12)}
+  function bell(f,t,dur,vol){celesta(f,t,dur,vol)}
+  function scheduleSong(t0){var t=t0;M.forEach(function(n){celesta(N[n[0]],t,n[1]*BEAT,.17);t+=n[1]*BEAT});
+    B.forEach(function(c,i){var s=t0+i*BPB*BEAT,f=N[CH[c]];
+      pad(f,s,BEAT*1.8,.035);pad(f,s+2*BEAT,BEAT*1.8,.03);
+      celesta(f/2*2,s,BEAT,.07);celesta(f*1.498,s+BEAT,BEAT*.6,.035);celesta(f,s+2*BEAT,BEAT,.06);celesta(f*1.498,s+3*BEAT,BEAT*.6,.035)});
+    for(var k=0;k<SONG;k++)jingle(t0+k*BEAT+BEAT/2,.022);
     return t0+(SONG+BPB)*BEAT}
   function loop(){if(!on)return;if(next-ctx.currentTime<4){next=scheduleSong(next)}timer=setTimeout(loop,1000)}
-  function start(){if(!ctx){ctx=new AC();master=ctx.createGain();master.gain.value=0;master.connect(ctx.destination)}
+  function start(){if(!ctx){setup()}
     ctx.resume();on=true;master.gain.cancelScheduledValues(ctx.currentTime);master.gain.setTargetAtTime(.55,ctx.currentTime,.4);
     if(next<ctx.currentTime)next=ctx.currentTime+.15;loop();btn.classList.add('on');btn.textContent='🔊 Música';btn.setAttribute('aria-pressed','true')}
   function stop(){on=false;clearTimeout(timer);if(ctx){master.gain.setTargetAtTime(0,ctx.currentTime,.2);setTimeout(function(){if(!on){ctx.suspend();next=0}},700)}
