@@ -69,6 +69,7 @@ textarea{min-height:80px;resize:vertical}
 .summary{text-align:left;background:#fff6e6;border:1px solid var(--line);border-radius:12px;padding:12px 16px;font:15px/1.6 system-ui,sans-serif;margin-top:14px;white-space:pre-line}
 footer{text-align:center;color:#d9ccb2;font:13px system-ui,sans-serif;margin-top:28px;opacity:.85}
 .hidden{display:none!important}
+.seeall{display:block;width:fit-content;margin:10px auto 0;color:#fbe9bd;font:600 14px system-ui,sans-serif;text-decoration:none;border-bottom:1px dashed var(--gold);padding-bottom:2px}
 .stgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;font-family:system-ui,sans-serif;text-align:center}
 .stgrid div{border:1px solid var(--line);border-radius:12px;padding:8px 4px;background:#fff}
 .stgrid b{display:block;font-size:24px;line-height:1.1}
@@ -163,6 +164,7 @@ figcaption{margin-top:10px;display:flex;flex-direction:column;align-items:center
     <div class="sub" id="ev"></div>
     <div class="date" id="dt"></div>
     <span class="deadline">📌 Confirme até 8 de dezembro</span>
+    <a class="seeall hidden" id="seeAll" href="#presencas">👀 Ver quem já confirmou</a>
     <div class="orn">✦</div>
   </header>
 
@@ -209,7 +211,7 @@ figcaption{margin-top:10px;display:flex;flex-direction:column;align-items:center
     <button class="btn ghost" id="again">Responder por outra família</button>
   </section>
 
-  <section class="card hidden" id="status">
+  <section class="card hidden" id="status"><a id="presencas"></a>
     <svg class="holly" viewBox="0 0 46 30" aria-hidden="true"><path d="M22 16C14 4 4 6 2 10c5 0 6 5 3 8 6-2 10 2 9 7 4-4 8-5 8-9z" fill="#1f6b45"/><path d="M24 16c8-12 18-10 20-6-5 0-6 5-3 8-6-2-10 2-9 7-4-4-8-5-8-9z" fill="#2a7d52"/><circle cx="20" cy="18" r="4" fill="#b52635"/><circle cx="27" cy="18" r="4" fill="#c62f3f"/><circle cx="23.5" cy="23" r="4" fill="#a3202e"/></svg>
     <h2>Quem já respondeu</h2>
     <p class="hint">A lista atualiza sozinha sempre que alguém responde.</p>
@@ -267,7 +269,7 @@ var DATA = {"family": "Família Costa", "event": "Almoço de Natal · 1.ª Ediç
 var $=function(s){return document.querySelector(s)};
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function norm(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')}
-var MEALS=[{k:'Misto Grelhado',i:'🥩'},{k:'Bacalhau à Braga',i:'🐟'},{k:'Vegetariana',i:'🥬',s:'Alho Francês à Brás ou Omelete de Legumes'}];
+var MEALS=[{k:'Misto Grelhado',i:'🥩'},{k:'Bacalhau à Braga',i:'🐟'},{k:'Vegetariana',i:'🥬',s:'Alho Francês à Brás ou Omelete de Legumes'},{k:'Ainda não sei',i:'🤔',s:'Escolho mais perto da data — basta responder outra vez'}];
 
 $('#fam').textContent=DATA.family;
 $('#ev').textContent=DATA.event||'Almoço de Natal';
@@ -375,7 +377,10 @@ function renderStatus(){var d=stData,yes=0,no=0,pend=0,html='';
   var tot=yes+no+pend;
   $('#stSum').innerHTML='<div class="stgrid"><div><b style="color:var(--ok)">'+yes+'</b><span>Confirmados</span></div><div><b style="color:var(--no)">'+no+'</b><span>Não vêm</span></div><div><b style="color:#a06d16">'+pend+'</b><span>Faltam responder</span></div></div>'+
     '<div class="bar"><i style="width:'+(tot?yes/tot*100:0)+'%;background:var(--ok)"></i><i style="width:'+(tot?no/tot*100:0)+'%;background:var(--no)"></i></div>';
-  $('#stList').innerHTML=html;$('#status').classList.remove('hidden')}
+  $('#stList').innerHTML=html;$('#status').classList.remove('hidden');$('#seeAll').classList.remove('hidden');
+  if(location.hash==='#presencas'&&!renderStatus.done){renderStatus.done=1;openList()}}
+function openList(){$('#stList').classList.remove('hidden');$('#stToggle').textContent='Esconder a lista';$('#status').scrollIntoView({behavior:'smooth',block:'start'})}
+$('#seeAll').addEventListener('click',function(e){e.preventDefault();openList();try{history.replaceState(null,'','#presencas')}catch(x){}});
 $('#stToggle').addEventListener('click',function(){var l=$('#stList'),h=l.classList.toggle('hidden');this.textContent=h?'Ver a lista da família':'Esconder a lista'});
 loadStatus();
 
