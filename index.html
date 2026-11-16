@@ -69,6 +69,8 @@ textarea{min-height:80px;resize:vertical}
 .summary{text-align:left;background:#fff6e6;border:1px solid var(--line);border-radius:12px;padding:12px 16px;font:15px/1.6 system-ui,sans-serif;margin-top:14px;white-space:pre-line}
 footer{text-align:center;color:#d9ccb2;font:13px system-ui,sans-serif;margin-top:28px;opacity:.85}
 .hidden{display:none!important}
+.steps{font:14px system-ui,sans-serif;color:var(--muted);background:#f6eedd;border-radius:20px;padding:5px 12px;display:inline-block;margin:0 0 10px}
+.steps b{color:var(--red2)}
 .eldest{position:relative;margin-top:22px;padding:26px 22px 20px;border-radius:18px;background:linear-gradient(160deg,#7f1622,#5e0f19);color:#fbefd9;border:1px solid var(--gold);box-shadow:0 10px 30px rgba(0,0,0,.3);font-size:17px;line-height:1.65}
 .eldest h2{color:var(--gold2);text-align:center;margin:0 0 12px}
 .eldest p{margin:0 0 12px}
@@ -194,7 +196,7 @@ figcaption{margin-top:10px;display:flex;flex-direction:column;align-items:center
     <div class="eq">“</div>
     <h2>Uma palavra do filho mais velho</h2>
     <p>Família,</p>
-    <p>Sou o mais velho dos nove e ainda tenho boas memórias de tudo o que vivemos. O pai e a mãe não tinham muito, mas tinham-nos a todos — e isso, para eles, era tudo.</p>
+    <p>Sou o mais velho dos nove e ainda tenho boas memórias de todos. O pai e a mãe não tinham muito, mas tinham-nos a todos — e isso, para eles, era tudo.</p>
     <p>Os anos foram passando, cada um seguiu a sua vida, e fomos deixando de nos juntar. Este almoço é a nossa forma de dizer que continuamos a ser aquela família. Que os netos e os bisnetos conheçam os primos, e que os irmãos voltem a rir à mesma mesa.</p>
     <p>Conto com todos. Os pais haviam de gostar de nos ver assim.</p>
     <p class="esign">Um abraço do vosso irmão, tio e avô,<span>José</span><small>o filho mais velho de António e Maria</small></p>
@@ -203,25 +205,26 @@ figcaption{margin-top:10px;display:flex;flex-direction:column;align-items:center
 
   <main id="form">
     <section class="card"><svg class="holly" viewBox="0 0 46 30" aria-hidden="true"><path d="M22 16C14 4 4 6 2 10c5 0 6 5 3 8 6-2 10 2 9 7 4-4 8-5 8-9z" fill="#1f6b45"/><path d="M24 16c8-12 18-10 20-6-5 0-6 5-3 8-6-2-10 2-9 7-4-4-8-5-8-9z" fill="#2a7d52"/><circle cx="20" cy="18" r="4" fill="#b52635"/><circle cx="27" cy="18" r="4" fill="#c62f3f"/><circle cx="23.5" cy="23" r="4" fill="#a3202e"/></svg>
-      <h2>1. Quem é?</h2>
-      <p class="hint">Escreva o seu nome e escolha a sua família. Pode escolher mais do que uma, se responder por outras pessoas. Confirme até 8 de dezembro.</p>
-      <input type="search" id="q" placeholder="O seu primeiro nome…" autocomplete="off">
+      <div class="steps">📝 Inscrição no almoço — <b>3 passos simples</b></div>
+      <h2>1. Procure o seu nome</h2>
+      <p class="hint">Escreva o seu primeiro nome e toque na sua família para a selecionar. Pode inscrever mais do que uma família (por exemplo, os seus pais ou filhos). Inscrições até 8 de dezembro.</p>
+      <input type="search" id="q" placeholder="Escreva aqui o seu primeiro nome…" autocomplete="off">
       <div class="results" id="res"></div>
     </section>
 
     <section class="card hidden" id="who"><svg class="holly" viewBox="0 0 46 30" aria-hidden="true"><path d="M22 16C14 4 4 6 2 10c5 0 6 5 3 8 6-2 10 2 9 7 4-4 8-5 8-9z" fill="#1f6b45"/><path d="M24 16c8-12 18-10 20-6-5 0-6 5-3 8-6-2-10 2-9 7-4-4-8-5-8-9z" fill="#2a7d52"/><circle cx="20" cy="18" r="4" fill="#b52635"/><circle cx="27" cy="18" r="4" fill="#c62f3f"/><circle cx="23.5" cy="23" r="4" fill="#a3202e"/></svg>
-      <h2>2. Quem vem?</h2>
+      <h2>2. Quem vem e o que vai comer</h2>
       <p class="hint">Para cada pessoa, diga se vem e escolha o prato. Se houver alergias ou restrições, indique-as — avisamos a cozinha.</p>
       <div class="note-love"><span>💛</span><span>Na lista aparecem os casais casados da família. Namorados(as) e companheiros(as) <b>acrescentam-se no botão por baixo da vossa família</b> — não por serem menos família, que já são, mas só porque ainda não estão na nossa árvore. À mesa de Natal há sempre lugar para mais um!</span></div>
       <div id="people"></div>
     </section>
 
     <section class="card hidden" id="final"><svg class="holly" viewBox="0 0 46 30" aria-hidden="true"><path d="M22 16C14 4 4 6 2 10c5 0 6 5 3 8 6-2 10 2 9 7 4-4 8-5 8-9z" fill="#1f6b45"/><path d="M24 16c8-12 18-10 20-6-5 0-6 5-3 8-6-2-10 2-9 7-4-4-8-5-8-9z" fill="#2a7d52"/><circle cx="20" cy="18" r="4" fill="#b52635"/><circle cx="27" cy="18" r="4" fill="#c62f3f"/><circle cx="23.5" cy="23" r="4" fill="#a3202e"/></svg>
-      <h2>3. Mais alguma coisa?</h2>
-      <p class="hint">Opcional: uma mensagem para a organização.</p>
+      <h2>3. Confirmar a inscrição</h2>
+      <p class="hint">Escreva o seu nome e carregue no botão. Se quiser, deixe uma mensagem para a organização.</p>
       <textarea id="msg" placeholder="Ex.: chegamos só depois do almoço…"></textarea>
       <div style="margin-top:12px"><input type="text" id="by" placeholder="O seu nome (quem está a responder)"></div>
-      <button class="btn" id="send">Enviar resposta</button>
+      <button class="btn" id="send">Confirmar inscrição 🎄</button>
       <div class="err" id="err"></div>
     </section>
   </main>
@@ -369,7 +372,7 @@ $('#send').addEventListener('click',function(){
   if(!by){err.textContent='Escreva o seu nome (quem está a responder).';$('#by').focus();return}
   var payload={submittedAt:new Date().toISOString(),by:by,message:msg,people:people};
   var txt=summaryText(people,by,msg),btn=this;
-  function finish(ok){btn.disabled=false;btn.textContent='Enviar resposta';
+  function finish(ok){btn.disabled=false;btn.textContent='Confirmar inscrição 🎄';
     $('#form').classList.add('hidden');$('#done').classList.remove('hidden');$('#sum').textContent=txt.split('\n').slice(2).join('\n').trim();
     var waUrl='https://wa.me/'+(CONFIG.WHATSAPP||'')+'?text='+encodeURIComponent(txt);
     $('#wa').classList.toggle('hidden',ok&&!!CONFIG.SCRIPT_URL&&!CONFIG.WHATSAPP);
@@ -388,7 +391,7 @@ $('#send').addEventListener('click',function(){
   btn.disabled=true;btn.textContent='A enviar…';
   fetch(CONFIG.SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)})
     .then(function(){finish(true)})
-    .catch(function(){btn.disabled=false;btn.textContent='Enviar resposta';err.textContent='Não foi possível enviar. Verifique a ligação à internet e tente de novo'+(CONFIG.WHATSAPP?', ou envie por WhatsApp.':'.')});
+    .catch(function(){btn.disabled=false;btn.textContent='Confirmar inscrição 🎄';err.textContent='Não foi possível enviar. Verifique a ligação à internet e tente de novo'+(CONFIG.WHATSAPP?', ou envie por WhatsApp.':'.')});
 });
 $('#again').addEventListener('click',function(){chosen=[];answers={};extras={};$('#q').value='';$('#msg').value='';renderResults();renderPeople();$('#done').classList.add('hidden');$('#form').classList.remove('hidden');window.scrollTo({top:0});$('#q').focus()});
 renderResults();
